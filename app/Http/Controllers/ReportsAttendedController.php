@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
-class ReportsStatusController extends Controller
+class ReportsAttendedController extends Controller
 {
     public function index()
     {

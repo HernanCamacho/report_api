@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return 'This is not a route that you can see bb';
+    return 'This is not a route that you can see bb the right route is http://localhost:8000/api/ + your route here';
+});
+
+Route::get('/api/', function () {
+    return 'I told you bb the right route is http://localhost:8000/api/ + your route here';
 });
 
 // App\User::create([

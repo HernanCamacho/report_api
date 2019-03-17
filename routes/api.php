@@ -25,7 +25,7 @@ Route::resource('cities', 'CitiesController');
 Route::resource('states', 'StatesController');
 Route::resource('departments', 'DepartmentsController');
 Route::resource('reports', 'ReportsController');
-Route::resource('reports-status', 'ReportsStatusController');
+Route::resource('reports-attended', 'ReportsAttendedController');
 Route::resource('users-employees', 'UsersEmployeesController');
 Route::resource('status', 'StatusController');
 Route::resource('roles', 'RolesController');

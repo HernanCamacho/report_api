@@ -16,6 +16,7 @@ class TypesOfDepartments extends Migration
         Schema::create('types_of_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->string('icon');
             $table->timestamps();
         });
     }

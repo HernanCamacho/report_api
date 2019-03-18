@@ -37,6 +37,7 @@ class ReportsController extends Controller
         $report->comments = $request->comments;
         $report->department_id = $request->department_id;
         $report->user_id = $request->user_id;
+        $rp_a->status_id = 1;
         $report->created_at = Carbon::now();
         $report->updated_at = Carbon::now();
 

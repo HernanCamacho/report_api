@@ -35,8 +35,7 @@ class ReportsAttendedController extends Controller
         $rp_a->evidence = 'uploads/posts/' . $evidence_new_name;
         $rp_a->comments = $request->comments;
         $rp_a->report_id = $request->report_id;
-        $rp_a->user_id = Auth::id();
-        $rp_a->status_id = 0;
+        $rp_a->user_id = $request->user_employee_id;
         $rp_a->created_at = Carbon::now();
         $rp_a->updated_at = Carbon::now();
         $rp_a->save();

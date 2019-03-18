@@ -24,8 +24,12 @@ class TypesOfDepartmentsController extends Controller
 
     public function store(Request $request)
     {
+        $icon = $request->icon;
+        $icon_new_name = time().$icon->getClientOriginalName();
+        $icon->move('uploads/icons',$icon_new_name);
         $ty_of_dep = new TypesOfDepartment;
         $ty_of_dep->name = $request->name;
+        $ty_of_dep->icon = 'uploads/icons/' . $icon_new_name;
         $ty_of_dep->created_at = Carbon::now();
         $ty_of_dep->updated_at = Carbon::now();
         $ty_of_dep->save();

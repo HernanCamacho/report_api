@@ -47,7 +47,7 @@ class UsersEmployeesController extends Controller
         $us_emp->updated_at = Carbon::now();
 
         $us_emp->save();
-        return 'true';
+        return $us_emp;
     }
 
     public function show($id)
@@ -79,7 +79,7 @@ class UsersEmployeesController extends Controller
         $us_emp->updated_at = Carbon::now();
 
         $us_emp->save();
-        return 'true';
+        return $us_emp;
     }
 
     public function destroy($id)

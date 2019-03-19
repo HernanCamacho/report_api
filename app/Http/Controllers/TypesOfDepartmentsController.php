@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;;
 
 class TypesOfDepartmentsController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $ty_of_deps = TypesOfDepartment::all();

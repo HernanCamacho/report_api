@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class DepartmentsController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $departments = Department::all();
@@ -32,7 +36,7 @@ class DepartmentsController extends Controller
         $department->created_at = Carbon::now();
         $department->updated_at = Carbon::now();
         $department->save();
-        return 'true';
+        return $department;
     }
 
     public function show($id)
@@ -56,7 +60,7 @@ class DepartmentsController extends Controller
         $department->city_council_id = $request->city_council_id;
         $department->updated_at = Carbon::now();
         $department->save();
-        return 'true';
+        return $department;
     }
 
     public function destroy($id)

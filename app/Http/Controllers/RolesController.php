@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class RolesController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $roles = Role::all();

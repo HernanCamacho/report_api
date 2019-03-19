@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatesController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $states = State::all();

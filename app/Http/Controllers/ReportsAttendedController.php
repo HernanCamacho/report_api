@@ -13,6 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReportsAttendedController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $reports_status = ReportAttended::all();

@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatusController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $statuses = Status::all();

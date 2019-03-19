@@ -12,6 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReportsController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $reports = Report::all();
@@ -23,27 +27,32 @@ class ReportsController extends Controller
         //
     }
 
-    public function store(Request $request)
-    {
+    public function saveImage(Request $request){
         //The next three lines store the image image, firts we rename the image,
         //then we move the image to public/uploads/posts
-        $evidence = $request->evidence;
+        $evidence = $request->img;
         $evidence_new_name = time().$evidence->getClientOriginalName();
         $evidence->move('uploads/posts',$evidence_new_name);
+        return 'uploads/posts/' . $evidence_new_name;
+    }
+
+    public function store(Request $request)
+    {
+
         $report = new Report;
         $report->latitude = $request->latitude;
         $report->longitude = $request->longitude;
-        $report->evidence = 'uploads/posts/' . $evidence_new_name;
+        // $report->evidence = $request->img;
         $report->comments = $request->comments;
         $report->department_id = $request->department_id;
         $report->user_id = $request->user_id;
-        $rp_a->status_id = 1;
+        $report->status_id = 1;
         $report->created_at = Carbon::now();
         $report->updated_at = Carbon::now();
 
         $report->save();
 
-        return 'true';
+        return $report;
     }
 
     public function show($id)

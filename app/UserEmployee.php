@@ -13,4 +13,8 @@ class UserEmployee extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rpAttended(){
+        return $this->hasOne(ReportAttended::class);
+    }
 }

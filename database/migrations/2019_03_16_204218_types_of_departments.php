@@ -17,7 +17,7 @@ class TypesOfDepartments extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('icon');
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 

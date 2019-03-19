@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsersController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $users = User::all();
@@ -24,21 +28,20 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        $img = $request->img_profile;
-        $img_new_name = time().$img->getClientOriginalName();
-        $img->move('uploads/profile',$img_new_name);
+        // $img = $request->img_profile;
+        // $img_new_name = time().$img->getClientOriginalName();
+        // $img->move('uploads/profile',$img_new_name);
 
         $user = new User;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
-        $user->img_profile = 'uploads/profile/' . $img_new_name;
         $user->password = bcrypt($request->password);
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
 
         $user->save();
-        return 'true';
+        return $user;
     }
 
     public function show($id)

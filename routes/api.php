@@ -19,6 +19,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // Route::post('register/{user}', 'UsersController@register');
+// Route::post('save-image', 'ReportsController@saveImage');
+Route::get('users-report', function(){
+    return \App\User::with('report')->get();
+});
+
+Route::get('status-report', function(){
+    return \App\Status::with('report')->get();
+});
+
+Route::get('report-rp-attended', function(){
+    return \App\Report::with('rpAttended')->get();
+});
+
+Route::get('us-emp-rp-att', function(){
+    return \App\UserEmployee::with('rpAttended')->get();
+});
 
 Route::resource('users', 'UsersController');
 Route::resource('cities', 'CitiesController');

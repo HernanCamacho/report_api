@@ -9,4 +9,8 @@ class Status extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function report(){
+        return $this->hasOne(Report::class);
+    }
 }

@@ -18,7 +18,7 @@ class Reports extends Migration
             $table->bigIncrements('id');
             $table->string('latitude');
             $table->string('longitude');
-            $table->string('evidence');
+            $table->string('evidence')->nullable();
             $table->string('comments')->nullable();
             $table->integer('department_id');
             $table->integer('status_id');

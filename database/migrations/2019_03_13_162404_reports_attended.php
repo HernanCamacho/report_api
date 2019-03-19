@@ -16,8 +16,8 @@ class ReportsAttended extends Migration
         Schema::create('reports_attended', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id'); //the field is filled when it is attended by an user_employee
-            $table->string('evidence');
-            $table->string('comments');
+            $table->string('evidence')->nullable();
+            $table->string('comments')->nullable();
             $table->integer('report_id');
             $table->integer('user_employee_id');
             $table->timestamps();
@@ -31,6 +31,6 @@ class ReportsAttended extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports_status');
+        Schema::dropIfExists('reports_attended');
     }
 }

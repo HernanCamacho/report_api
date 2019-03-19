@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsersEmployeesController extends Controller
 {
+    public function __construct(){
+         $this->middleware('ajax');
+    }
+
     public function index()
     {
         $uss_emp = UserEmployee::all();
@@ -25,9 +29,9 @@ class UsersEmployeesController extends Controller
     public function store(Request $request)
     {
 
-        $img = $request->img_profile;
-        $img_new_name = time().$img->getClientOriginalName();
-        $img->move('uploads/profile',$img_new_name);
+        // $img = $request->img_profile;
+        // $img_new_name = time().$img->getClientOriginalName();
+        // $img->move('uploads/profile',$img_new_name);
 
 
         $us_emp = new UserEmployee;
@@ -36,7 +40,6 @@ class UsersEmployeesController extends Controller
         $us_emp->email = $request->email;
         $us_emp->worker_number = $request->worker_number;
         $us_emp->password = bcrypt($request->password);
-        $us_emp->img_profile = 'uploads/profile/' . $img_new_name;
         $us_emp->department_id = $request->department_id;
         $us_emp->role_id = $request->role_id;
         $us_emp->checked = 0;
